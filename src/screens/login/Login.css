@@ -1,0 +1,15 @@
+FormControl{
+    width:200px
+}
+
+.dispNone{
+    display: none;
+}
+
+.dispBlock{
+    display:block;
+}
+
+.red{
+    color:red
+}
