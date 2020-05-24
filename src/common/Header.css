@@ -2,11 +2,40 @@
     background-color: #263238;
     height: 50px;
    /* padding: 13px 8px 13px 8px;*/
+   padding:10px;
 }
-
+#standard-adornment-amount{
+    padding :16px;
+}
 .app-logo{
     color: #fff;
     height: 18px;
     display: inline-block;
     padding: 15px 10px 15px 10px;
 }
+
+.app-header{
+   display:flex;
+   flex-direction: row;
+   justify-content: space-between;
+   
+  
+}
+
+.searchFieldBox{
+    width:300px;
+    border-radius: 4px;
+    background-color: #c0c0c0;
+    color:grey;
+}
+
+.headerRight{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-thumbnail{
+    height: 35px;
+    width: 40px;
+}
+

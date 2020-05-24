@@ -1,0 +1,24 @@
+.UserDetailsGrid{
+display:grid;
+grid-template-columns: 50% 50%;
+justify-self: 'start | end | center | stretch';
+
+}
+
+
+.red {
+    color:red;
+}
+
+.imagesUser{
+    height: 340px;
+    width: 642px;
+}
+
+.addComment{
+    width: 555px;
+}
+
+.ImageCard{
+    padding: 20px;
+}
