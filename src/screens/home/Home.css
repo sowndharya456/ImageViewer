@@ -22,3 +22,7 @@ justify-self: 'start | end | center | stretch';
 .ImageCard{
     padding: 20px;
 }
+
+.tagClass{
+    color:#0099ff;
+}

@@ -4,25 +4,11 @@ import ReactDOM from 'react-dom';
 import SearchIcon from '@material-ui/icons/Search';
 //import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { IconButton, InputBase,Menu, MenuItem } from '@material-ui/core';
+import { IconButton, InputBase, Menu, MenuItem } from '@material-ui/core';
 
 import Login from '../screens/login/Login';
 
 
-
-
-
-// const customStyles = {
-//     content: {
-//         top: '50%',
-//         left: '50%',
-//         right: 'auto',
-//         bottom: 'auto',
-//         marginRight: '-50%',
-//         transform: 'translate(-50%, -50%)'
-//     } 
-
-// }
 
 
 class Header extends Component {
@@ -35,29 +21,29 @@ class Header extends Component {
             isAccountModalOpen: false,
             loggedIn: sessionStorage.getItem("access-token") == null ? false : true,
             anchorEl: null,
-            open : false
+            open: false
         }
         // [this.anchorEl, this.setAnchorEl] = useState(null);
 
     }
 
-     handleClose = () => {
+    handleClose = () => {
         this.setState({
             ...this.state,
-            anchorEl : null,
-            open : false
+            anchorEl: null,
+            open: false
         })
-      }
+    }
 
 
-      open = () => {
+    open = () => {
         this.setState({ ...this.state, open: !this.state.open });
-      }
+    }
 
     searchFieldChangeHandler = (event) => {
         this.setState({ searchField: event.currentTarget })
     }
-    accountDetailsHandler = (event) => {   
+    accountDetailsHandler = (event) => {
         this.setState({ anchorEl: event.currentTarget, open: !this.state.open });
 
     }
@@ -97,16 +83,17 @@ class Header extends Component {
                 {this.props.loggedin === true ?
 
                     <div className="headerRight">
+                        {this.props.headerDropdown === 'true' ?
+                            <div className="searchFieldBox">
 
-                        <div className="searchFieldBox">
+                                <InputBase
+                                    id="standard-adornment-amount"
+                                    placeholder="Search"
+                                    startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>} onChange={this.props.onSearchHandler}
 
-                            <InputBase
-                                id="standard-adornment-amount"
-                                placeholder="Search"
-                                startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>} onChange={this.props.onSearchHandler}
-
-                            />
-                        </div>
+                                />
+                            </div> : ""
+                        }
 
                         <div className="profilePictureBox">
 
@@ -116,17 +103,27 @@ class Header extends Component {
                                 </div> : ""}
 
                             <Menu
+                                elevation={0}
+                                getContentAnchorEl={null}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
                                 id="Profile"
                                 anchorEl={this.state.anchorEl}
                                 keepMounted
                                 open={this.state.open}
                                 onClose={this.handleClose}>
                                 {this.props.headerDropdown === 'true' ?
-                                <MenuItem onClick={this.handleProfile}>Profile</MenuItem>
-                                : ""
+                                    <MenuItem onClick={this.handleProfile}>Profile</MenuItem>
+                                    : ""
                                 }
                                 <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                             </Menu>
+                            </Menu>
 
                         </div>
                     </div>

@@ -35,7 +35,9 @@ width: 30%;
 .red{
     color:red
 }
-
+.imageGridClass{
+    padding: 10px 100px;
+}
 .imageModal{
     display:flex;
     flex-direction:row;
@@ -60,11 +62,11 @@ width: 30%;
     border: 1px solid grey;
   }
   .addcommentBox{
-      height:180px;
+    height: 290px;
   }
 
   .commentBox{
-    width: 350px;
+    width: 299px;
   }
 
   .commentUsername{
@@ -85,9 +87,24 @@ width: 30%;
     display: flex;
     flex-direction: row;
     align-content: center;
-    left: 40%;
+    left: 28%;
     position: relative;
+    padding:15px;
   }
   .username-paddding {
-      padding: 5px;
+      padding: 10px;
   }
+
+  .gridimagecell{
+
+  }
+
+  #aria-label{
+      width: 100px;
+     height:90px;
+  }
+
+
+  .tagClass{
+    color:#0099ff;
+}

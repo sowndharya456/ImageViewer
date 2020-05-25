@@ -14,7 +14,7 @@ class Home extends Component {
             profile_picture: "",
             comments: [],
             addedComment: "",
-            loggedin: sessionStorage.getItem('access-token') !==null ? true : false
+            loggedin: sessionStorage.getItem('access-token') !== null ? true : false
 
 
         }
@@ -24,10 +24,10 @@ class Home extends Component {
 
     componentDidMount() {
         let redirect = this.props.location.pathname;
-        if ( !sessionStorage.getItem('access-token')) {
+        if (!sessionStorage.getItem('access-token')) {
             this.props.history.push(`/?redirect=${redirect}`);
             return;
-        }   
+        }
 
         let xhrReq = new XMLHttpRequest();
         let userData = null;
@@ -45,7 +45,7 @@ class Home extends Component {
                 })
                 that.setState({
                     userDetails: response.data,
-                    filteredDetails : response.data,
+                    filteredDetails: response.data,
                     profile_picture: response.data[0].user.profile_picture
                 });
                 sessionStorage.setItem('userDetails', JSON.stringify(that.state.userDetails));
@@ -60,18 +60,18 @@ class Home extends Component {
     }
 
     likeButtonClickedHandler = (user) => {
-        console.log("inside like handler");
+
         let likes = user.likes.count;
         let toggleLikeButton = user.user_has_liked;
         user.user_has_liked = !toggleLikeButton;
-        console.log(user);
+
         if (user.user_has_liked === true) {
             user.likes.count = likes + 1;
         }
         else {
             user.likes.count = likes - 1;
         }
-        console.log(user.likes);
+
         this.updatedUserDetails = this.state.filteredDetails.map(tempUser => {
             if (tempUser.id === user.id) {
                 return user;
@@ -89,28 +89,29 @@ class Home extends Component {
             }
             return tempUser;
         });
-        this.setState({ filteredDetails: updatedUserDetails,
-        addedComment : "" });
+        this.setState({
+            filteredDetails: updatedUserDetails,
+            addedComment: ""
+        });
 
     }
 
     addCommentToStateHandler = (event, user) => {
         this.setState({
-            addedComment:event.target.value
+            addedComment: event.target.value
         })
     }
 
     onSearchHandler = (event) => {
-        console.log(event.target.value);
-        
+
         let filteredUserDetails = this.state.userDetails;
         filteredUserDetails = filteredUserDetails.filter(user => {
-            let caption=user.caption.text.split('#')[0];
+            let caption = user.caption.text.split('#')[0];
             return caption.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0
         })
         this.setState(
             {
-                filteredDetails : filteredUserDetails
+                filteredDetails: filteredUserDetails
             }
         );
     }
@@ -118,7 +119,7 @@ class Home extends Component {
 
         return (
             <div >
-                <Header onSearchHandler= {this.onSearchHandler} loggedin={this.state.loggedin} headerDropdown='true' router_props={this.props} profile_picture={this.state.profile_picture} userDetails={this.state.userDetails} />
+                <Header onSearchHandler={this.onSearchHandler} loggedin={this.state.loggedin} headerDropdown='true' router_props={this.props} profile_picture={this.state.profile_picture} userDetails={this.state.userDetails} />
                 <div className='UserDetailsGrid'>
 
                     {this.state.filteredDetails.map(user => (
@@ -133,14 +134,18 @@ class Home extends Component {
                                 } title={user.user.username}
                                 subheader={(user.created_time)} />
                             <CardContent><Typography component='p'><img className="imagesUser" src={user.images.standard_resolution.url} alt='' /></Typography>
-                                <Typography component='p'>{user.caption.text}</Typography></CardContent>
+                                <Typography component='p'>{user.caption.text.split('#')[0]}</Typography>
+                                <Typography ><span className="tagClass">
+                                    {user.tags.map(tag => (
+                                        <span key={user.id + tag}>{"#" + tag}</span>
+                                    ))}</span></Typography></CardContent>
                             <CardActions>
                                 <IconButton onClick={() => this.likeButtonClickedHandler(user)}>{user.user_has_liked === true ? <FavoriteIcon className="red" /> : <FavoriteBorderIcon />}</IconButton>
                                 <Typography>{user.likes.count + " likes"}</Typography>
                             </CardActions>
                             <FormControl>
                                 <InputLabel htmlFor={"addComment" + user.id}>Add a comment</InputLabel>
-                                <Input type='text' className="addComment" id={'addComment' + user.id} value={ this.state.addedComment}
+                                <Input type='text' className="addComment" id={'addComment' + user.id} value={this.state.addedComment}
                                     onChange={(e) => this.addCommentToStateHandler(e, user)} ></Input>
                             </FormControl>
                             <FormControl>
