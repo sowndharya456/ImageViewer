@@ -227,7 +227,7 @@ class Profile extends Component {
                             </div>
                         </div>
                         <div className="bottom">
-                            <div class="username-paddding"><Typography>{this.state.user.full_name}</Typography></div>
+                            <div className="username-paddding"><Typography>{this.state.user.full_name}</Typography></div>
 
                             {/* <Button variant="Fab" color="secondary" onClick={this.handleOpenHandler} ><EditIcon /></Button> */}
                             <Fab size="small" color="secondary" onClick={this.handleOpenHandler} aria-label="edit">
@@ -263,6 +263,7 @@ class Profile extends Component {
 </div>
                 </div>
                 <div className={classes.root}>
+                    <div className="imageGridClass">
                     <GridList cellHeight={200} cols={2} className={classes.gridList}>
                         {this.state.userDetails.map(userProfile =>
                             <GridListTile rows={2} key={userProfile.id}   >
@@ -273,6 +274,7 @@ class Profile extends Component {
                         )}
 
                     </GridList>
+                    </div>
                     <div>
                         <Modal open={this.state.isopenImageModal} onClose={this.closeImageModalHandler} aria-labelledby="simple-modal-title"
                             aria-describedby="simple-modal-description">

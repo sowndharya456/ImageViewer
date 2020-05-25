@@ -94,23 +94,24 @@ class Header extends Component {
                     <span className='app-logo'>Image Viewer</span>
                 </div>
 
-                {this.props.loggedin === true ?
+                { this.props.loggedin === true ?
 
                     <div className="headerRight">
-
+                     { this.props.headerDropdown === 'true' ?
                         <div className="searchFieldBox">
-
+                    
                             <InputBase
                                 id="standard-adornment-amount"
                                 placeholder="Search"
                                 startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>} onChange={this.props.onSearchHandler}
 
                             />
-                        </div>
+                        </div>: ""
+    }
 
                         <div className="profilePictureBox">
 
-                            {this.props.loggedin === true ?
+                            {this.props.loggedin === true  ?
                                 <div >
                                     <IconButton aria-label="Profile" onClick={this.accountDetailsHandler} ><img className="profile-thumbnail" src={this.props.profile_picture} alt="profilepicture" /></IconButton>
                                 </div> : ""}
