@@ -45,8 +45,7 @@ class Login extends Component {
         this.state.loginpassword === '' ? this.setState({ loginpasswordrequired: 'dispBlock' }) : this.setState({ loginpasswordrequired: 'dispNone' })
 
         if (this.state.loginpassword !== 'dispBlock') {
-            if (this.state.loginusername === "admin" && this.state.loginpassword === "admin") {
-                console.log('hello');
+            if (this.state.loginusername === "upgrad" && this.state.loginpassword === "upgrad") {
                 this.setState({ loginError: 'dispNone' });
                 sessionStorage.setItem("access-token", "8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784");
                 this.props.history.push('/home');
