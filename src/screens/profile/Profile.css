@@ -1,0 +1,93 @@
+
+.HeaderLeft{
+    display:flex;
+    flex-direction: row;
+    margin-right: 5%;
+
+}
+
+.HeaderRight{
+display :flex;
+flex-direction: column;
+width: 30%;
+
+}
+
+.middle{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.bottom{
+    display :flex;
+    flex-direction: row;
+
+}
+.dispNone{
+    display: none;
+}
+
+.dispBlock{
+    display:block;
+}
+.red{
+    color:red
+}
+
+.imageModal{
+    display:flex;
+    flex-direction:row;
+}
+#leftImageModalId{
+    width:100%;
+    height:100%;
+
+}
+.leftImageModal{
+    width: 100%;
+}
+#leftLogo{
+    width: 53px;
+}
+
+.blockClass{
+    display:inline-flex ;
+    flex-direction: row;
+}
+.new4 {
+    border: 1px solid grey;
+  }
+  .addcommentBox{
+      height:180px;
+  }
+
+  .commentBox{
+    width: 350px;
+  }
+
+  .commentUsername{
+    padding: 15px;
+  }
+  .editCard{
+      width:100%;
+      height:100%;
+  }
+
+  #editButtonText{
+    width: 245px;
+
+  }
+
+  .headercenter{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    left: 40%;
+    position: relative;
+  }
+  .username-paddding {
+      padding: 5px;
+  }
